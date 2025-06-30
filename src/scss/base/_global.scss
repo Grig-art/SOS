@@ -1,0 +1,73 @@
+@use "../utils/vars" as *;
+@use "../utils/functions" as *;
+@use "../utils/mixins" as *;
+html,
+body {
+  height: 100%;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.main {
+  flex: 1 0 auto;
+}
+.footer {
+  flex: 0 0 auto;
+}
+
+.container {
+  max-width: rem(1230);
+  margin: 0 auto;
+  padding: 0 rem(15);
+}
+
+body {
+  font-family: $font-base;
+  font-weight: 600;
+}
+
+h1,
+h2 {
+  letter-spacing: rem(3);
+  font-family: $font-headline;
+  font-size: rem(80);
+  color: #fff;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.subtext {
+  font-size: rem(24);
+  line-height: 1;
+  color: white;
+  font-family: $font-headline;
+  text-transform: uppercase;
+}
+
+section {
+  min-height: rem(960);
+}
+.paragraph {
+  font-size: rem(18);
+  font-family: $font-base;
+  color: white;
+  font-weight: 400;
+}
+
+.subtext {
+  padding-bottom: rem(9);
+  letter-spacing: rem(2);
+  font-size: rem(24);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.title {
+  @include adaptive-text(80, 60, 44, 33);
+}
