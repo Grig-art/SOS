@@ -1,0 +1,32 @@
+@use "../utils/mixins" as *;
+@use "../utils/functions" as *;
+@use "../utils/vars" as *;
+@use "../components/index";
+
+@use "../utils/functions" as *;
+
+@media (max-width: 860px) {
+}
+
+@media (max-width: 720px) {
+}
+
+@media (max-width: 320px) {
+  // Здесь только стили, которые должны применяться на 320px и меньше
+  .header {
+    min-height: rem(816);
+    .header__title {
+      font-size: rem(33); // Теперь это должно работать
+    }
+  }
+
+  .about__left .about__paragraph {
+    padding-left: rem(21);
+  }
+
+  .slider__slide {
+    img {
+      object-fit: fill;
+    }
+  }
+}

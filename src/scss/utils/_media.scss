@@ -1,0 +1,76 @@
+@use "../utils/mixins" as *;
+@use "../utils/functions" as *;
+@use "../utils/vars" as *;
+@use "../components/index";
+
+@media (max-width: 720px) {
+  .features__title {
+    font-size: 60px;
+  }
+
+  .features {
+    background-image: radial-gradient(
+        51.1% 80.48% at 18.85% 32.65%,
+        rgba(255, 255, 255, 0) 0,
+        rgba(0, 0, 0, 0) 0.2%,
+        rgba(4, 5, 6, 0.520671) -3.52%,
+        #080a0b 65.74%
+      ),
+      url(/src/img/bg/features-bg.png);
+    min-height: rem(720);
+    .accordion {
+      padding-left: 0;
+    }
+    .features__text {
+      width: 100%;
+    }
+
+    .features__inner {
+      padding-top: rem(190);
+    }
+
+    .features__inner {
+      position: relative;
+    }
+    .features__content {
+      position: absolute;
+      top: 200px;
+      right: 20px;
+    }
+  }
+  .system {
+    margin-top: rem(0);
+  }
+}
+
+@media (max-width: 660px) {
+  .features {
+    min-height: 575px;
+
+    .features__content {
+      top: 108px;
+      right: 0;
+    }
+  }
+}
+
+@media (max-width: 476px) {
+  .about {
+    padding-bottom: 0;
+  }
+  .slider {
+  }
+}
+
+@media (max-width: 377px) {
+  .features__title {
+    font-size: 60px;
+  }
+
+  summary {
+    font-size: rem(21);
+  }
+}
+
+@media (max-width: 560px) {
+}

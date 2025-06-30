@@ -1,0 +1,35 @@
+@use "../utils/mixins" as *;
+@use "../utils/functions" as *;
+@use "../utils/vars" as *;
+@use "../components/index";
+
+@use "../utils/functions" as *;
+
+@media (max-width: 1407px) {
+  .about__left {
+    margin-bottom: rem(80);
+  }
+
+  .slider {
+    min-height: rem(454);
+  }
+  .header {
+    min-height: 100vh;
+  }
+  .header__inner {
+    min-height: 100vh;
+  }
+}
+
+@media (max-width: 476px) {
+  .slider {
+    min-height: rem(374);
+  }
+
+  .about {
+    padding-top: rem(36);
+  }
+  .header__main {
+    margin-top: rem(100);
+  }
+}

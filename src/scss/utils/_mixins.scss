@@ -1,0 +1,36 @@
+@use "functions" as *;
+
+@mixin fluid-font($min, $max) {
+  font-size: clamp(
+    #{$min}px,
+    calc(#{$min}px + (#{($max - $min)} * ((100vw - 320px) / 1280)), #{$max}px)
+  );
+}
+
+@mixin center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin fluid-font($min, $max) {
+  font-size: clamp(
+    #{$min}px,
+    calc(#{$min}px + (#{($max - $min)} * ((100vw - 320px) / 1200)), #{$max}px)
+  );
+}
+
+@mixin adaptive-text($desktop, $large-desktop, $mobile, $mobile-sm) {
+  font-size: rem($desktop);
+
+  @media (max-width: 847px) {
+    font-size: rem($large-desktop);
+  }
+
+  @media (max-width: 720px) {
+    font-size: rem($mobile);
+  }
+  @media (max-width: 320px) {
+    font-size: rem($mobile-sm);
+  }
+}
