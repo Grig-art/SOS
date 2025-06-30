@@ -1,0 +1,22 @@
+@use "../utils/mixins" as *;
+@use "../utils/functions" as *;
+@use "../utils/vars" as *;
+
+.btn {
+  width: rem(260);
+  height: rem(60);
+  background: linear-gradient(194.68deg, #ffb548 11.27%, #f3af34 90.4%);
+  padding-top: rem(18);
+  padding-bottom: rem(20);
+  transition: transform 0.2s ease;
+  color: #1a1917;
+  cursor: pointer;
+  border-radius: rem(4);
+
+  &:hover {
+    opacity: 0.9;
+  }
+  &:active {
+    transform: scale(0.98);
+  }
+}
