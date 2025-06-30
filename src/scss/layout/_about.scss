@@ -1,0 +1,325 @@
+@use "../utils/mixins" as *;
+@use "../utils/functions" as *;
+@use "../utils/vars" as *;
+@use "../components/index";
+
+.about {
+  background-image: radial-gradient(
+      136.03% 54.57% at 50% 48.04%,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(0, 0, 0, 0) 60.63%,
+      #080a0b 99.74%
+    ),
+    url("/src/img/bg/about-bg.png");
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  z-index: 0;
+  position: relative;
+  padding: rem(300) rem(148) 0 rem(148);
+  min-height: rem(961);
+  &::before {
+    content: ""; // Обязательно для псевдоэлементов
+    position: absolute;
+    background-color: hsla(200, 16%, 4%, 1);
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    opacity: 0.7;
+  }
+
+  &__right {
+    margin-left: 28px;
+    position: relative;
+    width: rem(519);
+
+    @media (max-width: 1407px) {
+      margin-left: 0;
+    }
+  }
+
+  &__inner {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__left {
+    max-width: rem(552);
+
+    .about__title {
+      @include adaptive-text(80, 60, 60, 33);
+      padding-bottom: rem(8);
+      position: relative;
+      margin-bottom: 60px;
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        display: block;
+        height: rem(2);
+        width: 100%;
+        background-color: white;
+        z-index: 100;
+      }
+      @media (max-width: 377px) {
+        font-size: rem(44);
+      }
+    }
+
+    @media (max-width: 320px) {
+      margin-bottom: rem(80);
+    }
+  }
+  .about__paragraph {
+    @include adaptive-text(18, 18, 18, 14);
+    font-family: $font-base;
+    font-weight: 400;
+    color: white;
+    font-weight: 400;
+    padding-left: rem(180);
+    line-height: 1.2;
+    word-spacing: 3px;
+
+    @media (max-width: 1407px) {
+      padding-left: 0;
+    }
+  }
+  .text-size {
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 4px; // Или rem(-2) чтобы опустить линию ниже
+      width: 100%; // Линия будет по ширине слова "story"
+      height: rem(5); // Толщина линии
+      background-color: #ffb548; // Желтый цвет
+      z-index: -1;
+    }
+  }
+
+  .second-paragraph {
+    padding-top: rem(30);
+  }
+}
+
+// Для сглаживания поведения при ресайзе
+.slider__slide img {
+  display: block;
+  width: rem(502);
+  min-height: rem(610);
+  object-fit: fill;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.slider__dots {
+  position: absolute;
+  z-index: 10;
+  display: flex;
+  bottom: -500px;
+  left: 50%;
+  transform: translate(-50%);
+  gap: rem(52);
+  max-width: rem(320);
+}
+
+.slider__dot {
+  width: rem(14);
+  height: rem(14);
+  border-radius: 50%;
+  border: 1px solid white;
+  background-color: transparent;
+  transition: background-color 0.2s ease-in;
+  cursor: pointer;
+
+  &:hover {
+    background-color: white;
+  }
+
+  .active {
+    background-color: white;
+  }
+}
+
+.slider__slide {
+  img {
+    border-radius: 10px;
+    object-fit: cover;
+  }
+}
+
+.slider__arrow {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  position: absolute;
+  left: 115%;
+  top: 33%;
+}
+
+.slider {
+  position: relative;
+  min-height: rem(602);
+  padding-left: rem(28);
+  display: flex;
+  @media (max-width: 1407px) {
+    margin-left: -75px;
+    padding-left: 0;
+  }
+
+  @media (max-width: 474px) {
+    margin-left: -120px;
+    min-height: rem(374);
+  }
+  @media (max-width: 377px) {
+  }
+
+  @media (max-width: 346px) {
+    margin-left: -144px;
+  }
+
+  &__arrow {
+    transform: rotate(-90deg);
+    cursor: pointer;
+  }
+
+  &__slides {
+    position: relative;
+    width: rem(502);
+    @media (max-width: 320px) {
+      width: 100%;
+    }
+  }
+}
+.slider__slide {
+  position: absolute;
+  width: rem(350);
+  height: rem(350);
+  transition: all 0.5s ease;
+  overflow: hidden;
+  transition: transform 0.5s ease;
+}
+
+// Первый (фокусный) слайд
+
+@media (max-width: 1407px) {
+  .about__left {
+    max-width: 100%;
+  }
+  .about__title {
+    &::after {
+      content: "";
+      width: 100%;
+    }
+  }
+  .about__left {
+    margin-bottom: rem(160);
+  }
+
+  .about {
+    padding: rem(100) rem(20) rem(100) rem(20);
+  }
+
+  .slider__arrow {
+    left: 110%;
+    left: 450px;
+    top: 188px;
+    @media (max-width: 474px) {
+      left: 403px;
+      top: 141px;
+      width: 45px;
+    }
+
+    @media (max-width: 377px) {
+      left: 376px;
+      top: 141px;
+      width: 35px;
+    }
+  }
+  .about__paragraph {
+    padding-left: 0;
+  }
+}
+
+.slider__slide--first {
+  position: absolute;
+  z-index: 5;
+  top: rem(-43);
+  left: rem(0);
+  width: rem(500);
+  height: rem(610);
+  transform: scale(1);
+  transition: transform 0.5s ease;
+  transform: translate(rem(0), rem(-43)) scale(1);
+  @media (max-width: 1407px) {
+    transform: translate(rem(0), rem(-43)) scale(0.7);
+  }
+
+  @media (max-width: 474px) {
+    transform: scale(0.5);
+    top: rem(-139);
+  }
+  @media (max-width: 377px) {
+    transform: scale(0.4);
+  }
+}
+
+// Второй слайд — средний
+.slider__slide--second {
+  position: absolute;
+  z-index: 4;
+  top: rem(-50);
+  left: rem(2);
+  width: rem(500);
+  height: rem(610);
+  transform: scale(0.9);
+  transition: transform 0.5s ease;
+  transform: translate(rem(50), rem(-36)) scale(0.9);
+  @media (max-width: 1407px) {
+    transform: translate(rem(0), rem(-43)) scale(0.6);
+    left: 34px;
+    top: -48px;
+  }
+  @media (max-width: 474px) {
+    transform: scale(0.4);
+    top: rem(-141);
+  }
+
+  @media (max-width: 377px) {
+    transform: scale(0.3);
+  }
+}
+
+// Третий слайд — самый маленький
+.slider__slide--three {
+  position: absolute;
+  z-index: 3;
+  top: rem(-42);
+  left: rem(0);
+  width: rem(500);
+  height: rem(610);
+  transform: scale(0.8);
+  transition: transform 0.5s ease;
+  transform: translate(rem(96), rem(-42)) scale(0.8);
+  @media (max-width: 1407px) {
+    transform: translate(rem(0), rem(-43)) scale(0.5);
+    left: 65px;
+    top: -58px;
+  }
+  @media (max-width: 474px) {
+    transform: scale(0.3);
+    top: rem(-143);
+  }
+
+  @media (max-width: 377px) {
+    transform: scale(0.2);
+  }
+}

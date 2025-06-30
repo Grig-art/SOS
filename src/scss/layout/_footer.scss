@@ -1,0 +1,185 @@
+@use "../utils/mixins" as *;
+@use "../utils/functions" as *;
+@use "../utils/vars" as *;
+@use "../components/index";
+
+.footer {
+  background-color: #080a0b;
+  min-height: rem(233);
+  max-width: 100%;
+  padding-top: rem(20);
+  @media (max-width: 442px) {
+    min-height: 436px;
+  }
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    min-height: rem(120);
+    align-items: end;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    padding-bottom: rem(30);
+    @media (max-width: 972px) {
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+  }
+
+  .footer__nav {
+    max-width: rem(600);
+    margin: 0 rem(15);
+  }
+  .menu {
+    text-align: center;
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    color: white;
+    gap: rem(32);
+    padding-bottom: rem(10);
+    @media (max-width: 972px) {
+      justify-content: center;
+    }
+    li {
+      font-weight: 700;
+      font-size: rem(12);
+      line-height: rem(12);
+      letter-spacing: rem(1.2);
+      text-transform: uppercase;
+      transition: color 0.3s linear;
+      padding: rem(0) rem(2);
+
+      &:hover {
+        color: $secondary-color;
+      }
+    }
+  }
+
+  .logo__footer {
+    width: rem(90);
+    height: rem(90);
+    margin-right: rem(10);
+    @media (max-width: 972px) {
+      margin-bottom: 20px;
+    }
+  }
+
+  .footer__bottom {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    padding-top: rem(22);
+    flex-wrap: wrap;
+    gap: 35px;
+    @media (max-width: 972px) {
+      justify-content: center;
+      gap: 15px;
+      padding-top: 0;
+      padding-bottom: 20px;
+    }
+  }
+
+  &__bottom__item {
+    display: flex;
+  }
+
+  &__bottom__list {
+    font-size: rem(12);
+    padding: 0 rem(5);
+    height: rem(21);
+    text-transform: uppercase;
+    line-height: rem(23);
+    text-align: center;
+    font-weight: 700;
+    font-family: $font-base;
+    letter-spacing: rem(1.2);
+    position: relative;
+    transition: color 0.3s linear;
+
+    &:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      right: 0; /* Размещаем справа */
+      top: 50%; /* Начинаем по центру */
+      transform: translateY(
+        -50%
+      ); /* Смещаем вверх на половину своей высоты, чтобы центрировать */
+      width: rem(2); /* Толщина линии */
+      height: rem(11); /* **Здесь вы задаете нужную высоту линии** */
+      background-color: white; /* Цвет линии */
+      @media (max-width: 442px) {
+        top: 100%;
+      }
+    }
+
+    &:hover {
+      color: $secondary-color;
+    }
+  }
+
+  &__social-media {
+    display: flex;
+    max-width: rem(240);
+    padding-bottom: rem(5);
+    margin-left: rem(5);
+    &:hover {
+      fill: blue;
+    }
+    li {
+      flex-shrink: 0;
+    }
+  }
+
+  .facebook {
+    svg {
+      height: rem(18);
+      width: rem(10);
+      cursor: pointer;
+      &:hover path {
+        fill: #1877f2;
+      }
+    }
+  }
+
+  .twitter {
+    flex-shrink: 0;
+    svg {
+      margin-left: rem(55);
+      height: rem(18);
+      width: rem(21);
+      cursor: pointer;
+      &:hover path {
+        fill: #1da1f2;
+      }
+    }
+  }
+  .youtube {
+    flex-shrink: 0;
+    svg {
+      margin-left: rem(55);
+      height: rem(17);
+      width: rem(24);
+      cursor: pointer;
+
+      &:hover path {
+        fill: #ff0000;
+      }
+    }
+  }
+  .twitch {
+    flex-shrink: 0;
+    svg {
+      margin-left: rem(55);
+      height: rem(19);
+      width: rem(20);
+      cursor: pointer;
+
+      &:hover path {
+        fill: #6441a5;
+      }
+    }
+  }
+}

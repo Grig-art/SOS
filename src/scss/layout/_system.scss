@@ -1,0 +1,114 @@
+@use "../utils/mixins" as *;
+@use "../utils/functions" as *;
+@use "../utils/vars" as *;
+@use "../components/index";
+
+.system {
+  background-image: radial-gradient(
+      33.26% 45% at 64.32% 47.1%,
+      rgba(255, 255, 255, 0) 3.36%,
+      rgba(0, 0, 0, 0) 19.22%,
+      #080a0b 99.74%
+    ),
+    url("/src/img/bg/system-bg.png");
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  padding-top: rem(145);
+  padding-bottom: rem(170);
+
+  &__top {
+    max-width: rem(633);
+    padding-top: rem(145);
+    text-align: center;
+    margin: 0 auto;
+    margin-bottom: rem(133);
+
+    .system__subtext {
+      letter-spacing: rem(2);
+    }
+
+    .system__title {
+      letter-spacing: rem(3);
+      @include adaptive-text(80, 60, 44, 33);
+    }
+  }
+
+  .parametrs__titles {
+    font-family: $font-headline;
+    font-weight: 400;
+    font-size: rem(24);
+
+    line-height: 1.2;
+    letter-spacing: rem(2);
+    color: $secondary-color;
+    padding-bottom: rem(6);
+  }
+
+  .system__content--items {
+    padding: rem(15) rem(10) 0 rem(10);
+    border: 1px solid rgba(151, 151, 151, 0.3);
+    min-height: rem(125);
+    position: relative;
+  }
+
+  .grid-item {
+    grid-column: 1/3;
+    padding-bottom: rem(5);
+  }
+}
+.system__content--list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(3, 1fr);
+}
+
+.system__content {
+  max-width: rem(574);
+  height: rem(400);
+}
+
+@media (max-width: 876px) {
+  .system {
+    padding: 0;
+    padding-top: 70px;
+    min-height: 730px;
+  }
+  .system__content {
+    margin: 0 auto;
+  }
+  .system__top {
+    padding-top: 0;
+    margin-bottom: 50px;
+  }
+}
+@media (max-width: 570px) {
+  .system__content--list {
+    grid-template-rows: repeat(3, 135px);
+  }
+
+  .system__content--items {
+    min-height: 100px;
+    .parametrs__titles {
+      font-size: 20px;
+    }
+    .paragraph {
+      font-size: 14px;
+    }
+  }
+}
+
+@media (max-width: 476px) {
+  .system__title {
+    font-size: 44px;
+  }
+}
+
+@media (max-width: 467px) {
+  .system__subtext {
+  }
+  .system__title {
+    font-size: 55px;
+  }
+}

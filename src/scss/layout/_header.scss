@@ -1,0 +1,351 @@
+@use "../utils/mixins" as *;
+@use "../utils/functions" as *;
+@use "../utils/vars" as *;
+@use "../components/index";
+
+.header {
+  min-height: 100vh;
+  margin-top: rem(21);
+  padding-top: rem(21);
+  margin: 0 auto;
+  background-image: radial-gradient(
+      189.96% 61.18% at 50% 38.82%,
+      rgba(255, 181, 72, 0) 0%,
+      rgba(52, 44, 29, 0.80319) 73.22%,
+      #08090a 99.74%
+    ),
+    url("/src/img/bg/hero-bg.png");
+
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center top;
+  min-height: rem(960);
+
+  .header__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    width: 55px;
+    height: 55px;
+    cursor: pointer;
+  }
+
+  .menu {
+    text-align: center;
+    align-items: center;
+    display: flex;
+    color: white;
+    gap: rem(32);
+
+    li {
+      font-weight: 700;
+      font-size: rem(12);
+      line-height: 100%;
+      letter-spacing: rem(1.2);
+      text-transform: uppercase;
+      transition: color 0.3s linear;
+      margin: rem(0) rem(5);
+
+      &:hover {
+        color: $secondary-color;
+      }
+    }
+  }
+}
+.language-selector {
+  position: relative;
+  padding-right: rem(40);
+
+  .current-lang {
+    font-weight: 700;
+    font-size: rem(12);
+    line-height: 1.2;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    position: relative;
+    color: white;
+    cursor: pointer;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 5px;
+      left: 33px;
+      width: 10px;
+      height: 10px;
+      background-image: url("/src/img/content/arrow.png");
+      background-repeat: no-repeat;
+      transition: transform 0.3s ease;
+    }
+  }
+
+  .lang-list {
+    position: absolute;
+    top: 30px;
+    right: 20px;
+    width: rem(55);
+    background-color: black;
+    color: white;
+    border-radius: rem(3);
+    overflow: hidden;
+
+    // Начальное состояние
+    max-height: 0;
+    opacity: 0;
+    visibility: hidden;
+    padding: 0 rem(20) 0 rem(5);
+    transition: all 0.3s ease;
+
+    li {
+      font-size: rem(12);
+      margin-bottom: rem(10);
+      letter-spacing: 1.2px;
+      line-height: 0.8;
+      cursor: pointer;
+      padding-right: rem(50);
+      transition: color 0.1s linear;
+
+      &:hover {
+        color: $secondary-color;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &.open {
+    .lang-list {
+      max-height: rem(200); // больше, чем содержимое
+      opacity: 1;
+      visibility: visible;
+      padding: rem(5) rem(20) rem(5) rem(5);
+    }
+
+    .current-lang::after {
+      transform: translateY(-50%) rotate(180deg);
+    }
+  }
+}
+
+.header__box {
+  display: flex;
+  width: 170px;
+  justify-content: space-between;
+}
+
+.find-us {
+  display: block;
+  border-left: 1px solid rgb(255, 255, 255, 0.5);
+}
+.find-us__item {
+  display: flex;
+  gap: rem(17);
+  cursor: pointer;
+
+  &:first-child {
+    padding-left: rem(24);
+
+    svg {
+      transition: transform 0.2s ease, fill 0.2s ease;
+
+      &:hover path {
+        opacity: 0.8;
+        cursor: pointer;
+      }
+
+      &:active {
+        transform: scale(1.1);
+      }
+    }
+  }
+}
+
+.header__main {
+  display: flex;
+  margin-top: 200px;
+  justify-content: center;
+  flex: 1 0 auto;
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .header__btn {
+    display: flex;
+    justify-content: space-evenly;
+    @include adaptive-text(16, 16, 16, 14);
+
+    .line {
+      width: rem(1);
+      height: rem(24);
+      background-color: #1a1917;
+      opacity: 50%;
+      transform: rotate(-3deg);
+    }
+  }
+}
+
+.header__paragraph {
+  line-height: 1;
+  color: white;
+  font-family: $font-headline;
+  padding: rem(5) rem(5) rem(28) rem(5);
+  letter-spacing: rem(2);
+}
+
+.header__inner {
+  display: flex;
+  flex-direction: column;
+  min-height: 960px;
+}
+
+.header__item {
+  display: flex;
+  justify-content: center;
+  flex: 0 0 auto;
+  margin-bottom: rem(60);
+
+  .scroll-down {
+    color: white;
+    font-size: rem(12);
+    line-height: rem(22);
+    height: rem(24);
+    padding-bottom: rem(10);
+    position: relative;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: color 0.1s ease-in, transform 0.1s ease-in;
+
+    svg {
+      margin: 0 auto;
+    }
+    &:hover {
+      color: $secondary-color;
+      svg path {
+        stroke: $secondary-color; // Для иконки
+      }
+    }
+    &:active {
+      transform: translateY(rem(20));
+    }
+  }
+}
+
+@media (max-width: 980px) {
+  .header__nav {
+    display: none;
+  }
+
+  .find-us {
+    display: none;
+  }
+
+  .burger {
+    width: rem(37);
+    height: rem(34);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    gap: rem(5);
+    cursor: pointer;
+    z-index: 5;
+
+    span {
+      height: rem(4);
+      width: 100%;
+      background-color: white;
+      border-radius: rem(3);
+    }
+
+    &:before {
+      content: "";
+
+      height: rem(4);
+      width: 100%;
+      background-color: white;
+      border-radius: rem(3);
+    }
+    &:after {
+      content: "";
+
+      height: rem(4);
+      width: 60%;
+      background-color: white;
+      border-radius: rem(3);
+    }
+  }
+
+  .header__box {
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  .language-selector {
+    border-right: 1px solid rgb(255, 255, 255, 0.5);
+    width: rem(60);
+    min-height: rem(30);
+  }
+
+  .active {
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    background-color: $secondary-color;
+    height: rem(260);
+    width: 98%;
+    z-index: 4;
+    justify-content: center;
+    align-items: flex-end;
+
+    .menu {
+      flex-direction: column;
+      margin-bottom: rem(20);
+      gap: rem(25);
+    }
+
+    li {
+      transition: color 0.3 ease;
+      a {
+        @include adaptive-text(20, 20, 14, 14);
+        &:hover {
+          color: black;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 720px) {
+  .header__title {
+    font-size: rem(60);
+  }
+}
+
+@media (max-width: 320px) {
+  .header__paragraph {
+    padding: rem(7) rem(15);
+    margin-bottom: rem(13);
+  }
+
+  .header__btn {
+    max-width: rem(214);
+    height: rem(44);
+    align-items: center;
+  }
+
+  .header__inner {
+    min-height: 100vh;
+  }
+}

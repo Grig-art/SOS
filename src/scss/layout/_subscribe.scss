@@ -1,0 +1,117 @@
+@use "../utils/mixins" as *;
+@use "../utils/functions" as *;
+@use "../utils/vars" as *;
+@use "../components/index";
+
+.subs {
+  background-image: radial-gradient(
+    78.66% 177.87% at 19.56% 37.57%,
+    rgb(7 9 10) 0,
+    #07090a 19.22%,
+    #080a0b 99.74%
+  );
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  @media (max-width: 722px) {
+    min-height: 523px;
+  }
+
+  &__img {
+    max-width: rem(445);
+    padding-top: rem(50);
+    @media (max-width: 722px) {
+      display: none;
+    }
+  }
+
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__content {
+    max-width: rem(677);
+    padding-top: rem(220);
+    @media (max-width: 722px) {
+      padding-top: 0;
+    }
+
+    &__bottom {
+      display: flex;
+      gap: rem(17);
+      position: relative;
+      margin-bottom: 20px;
+      @media (max-width: 722px) {
+        flex-wrap: wrap;
+        padding-top: 0;
+      }
+    }
+  }
+
+  &__subtext {
+    max-width: rem(266);
+  }
+
+  &__title {
+    width: 100%;
+    margin-bottom: rem(45);
+    @media (max-width: 722px) {
+      font-size: 33px;
+    }
+  }
+
+  &__paragraph {
+    min-height: rem(136);
+    padding-bottom: rem(10);
+  }
+
+  .input {
+    display: block;
+    background-color: rgba(255, 255, 255, 0.08);
+    padding: rem(6) 0 rem(6) rem(21);
+    height: rem(66);
+    border-radius: rem(5);
+    flex-basis: rem(367);
+    color: $secondary-color;
+
+    &:focus,
+    &:not(:placeholder-shown) {
+      & + label {
+        top: 3px;
+        left: 20px;
+        padding-bottom: rem(5);
+        font-family: $font-base;
+        font-weight: 300;
+        font-size: rem(14);
+      }
+    }
+    @media (max-width: 722px) {
+      flex-basis: 100%;
+    }
+  }
+
+  &__btn {
+    flex-basis: rem(260);
+    @media (max-width: 722px) {
+      flex-basis: 100%;
+    }
+  }
+  label {
+    position: absolute;
+    left: 20px;
+    top: 24px;
+    color: #aaa;
+    font-family: $font-base;
+    font-weight: 300;
+    font-size: rem(14);
+    pointer-events: none;
+    transition: all 0.2s ease;
+  }
+}
+
+@media (max-width: 700px) {
+  .subs__content__bottom {
+    flex-wrap: wrap;
+  }
+}
